@@ -1,19 +1,16 @@
-use std::fs;
 use std::env;
 use std::path::Path;
-use std::io;
 extern crate walkdir;
 use walkdir::WalkDir;
-use std::ffi::OsStr;
 fn main() {
 	let args: Vec<String> = env::args().collect();
 	let ext = &args[1];
 	println!("Extension {}", ext);
-	recorrer_Path(&ext);
+	recorrer_path(&ext);
 }
 
 
-fn recorrer_Path(ext: &str){
+fn recorrer_path(ext: &str){
 	let directory = Path::new(".");
 	for paths in WalkDir::new(&directory) {
 		let p= paths.unwrap();

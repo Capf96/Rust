@@ -1,0 +1,8 @@
+[package]
+name = "project"
+version = "0.1.0"
+authors = ["Maria Bracamonte <mabraca18@gmail.com>"]
+
+
+[dependencies]
+walkdir = "2.1.4"

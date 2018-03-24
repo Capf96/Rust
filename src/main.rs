@@ -32,37 +32,41 @@ fn escribir(vec: HashMap<String,String>, ext: &str){
 		println!("No se escontro ningun archivo");
 	}
 	/*Almaceno lo que esta en el hash map en un txt para una proxima busqueda*/
-    let path = Path::new("busqueda.txt");
-    let display = path.display();
-    let mut file = match File::create(&path) {
-        Err(why) => panic!("No se pudo crear el archivo {}: {}",
-                           display,
-                           why.description()),
-        Ok(file) => file,
-    };
-    for (key,value) in vec{
-    	//Archivo path
-    	let string = format!("{} {} \n", key, value);
-    	match file.write_all(string.as_bytes()) {
-        Err(why) => {
-            panic!("No se pudo crear el archivo {}: {}", display, why.description())
-        },
-        Ok(_) => println!("Fue escrito exitosamente {}", display),
-    }
-    }
-    
+	let path = Path::new("busqueda.txt");
+	let display = path.display();
+	let mut file = match File::create(&path) {
+		Err(why) => panic!("No se pudo crear el archivo {}: {}",
+						   display,
+						   why.description()),
+		Ok(file) => file,
+	};
+	for (key,value) in vec{
+		//Archivo path
+		let string = format!("{} {} \n", key, value);
+		match file.write_all(string.as_bytes()) {
+			Err(why) => {
+				panic!("No se pudo crear el archivo {}: {}", display, why.description())
+			},
+			Ok(_) => println!("Fue escrito exitosamente {}", display),
+		}
+	}
+	
 }
 
 fn leer(ext: &str) {
 	/*Leo el archivo como primera opcion para ver si 
 	lo que busco se encuentra en el */
-    let file = File::open("busqueda.txt").unwrap();
-    for line in BufReader::new(file).lines() {
-        if line.unwrap().contains(ext){
-        	println!("Esta en el archivo pero no puedo imprimirlo :c");
-        	//println!("{:?}",line.unwrap());
-        }
-    }
+	let file = File::open("busqueda.txt");
+	let archivo = match file {
+		Ok(x) => x,
+		Err(_) => return,
+	};
+	for line in BufReader::new(archivo).lines() {
+		if line.unwrap().contains(ext){
+			println!("Esta en el archivo pero no puedo imprimirlo :c");
+			//println!("{:?}",line.unwrap());
+		}
+	}
 }
 
 fn recorrer_path() -> HashMap<String,String>{

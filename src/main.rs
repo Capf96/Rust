@@ -26,8 +26,8 @@ fn escribir(vec: HashMap<String,String>, ext: &str){
 	/*Recorro el hash map a ver si consigo el archivo*/
 	for (key,value) in &vec{
 		println!("{:?} -> {:?}",key, value);
-		if key.contains(&ext.to_string()){
-			println!("{} : {:?}", &ext.to_string(),value);
+		if value.contains(&ext.to_string()){
+			println!("{} : {:?}", &ext.to_string(),key);
 		}
 	}
 	/*Almaceno lo que esta en el hash map en un txt para una proxima busqueda*/
@@ -78,7 +78,7 @@ fn recorrer_path() -> HashMap<String,String>{
 		if !p.file_type().is_dir() {
 			/*Almaceno en el hash el nombre del archivo que consiga que no sea
 			directorio junto a su ruta de busqueda.*/
-			dir.insert(String::from(file_name_as_str),p.path().display().to_string());
+			dir.insert(p.path().display().to_string(), String::from(file_name_as_str),);
 		};		
 	}
 	dir

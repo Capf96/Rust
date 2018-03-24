@@ -25,7 +25,6 @@ fn main() {
 fn escribir(vec: HashMap<String,String>, ext: &str){
 	/*Recorro el hash map a ver si consigo el archivo*/
 	for (key,value) in &vec{
-		println!("{:?} -> {:?}",key, value);
 		if value.contains(&ext.to_string()){
 			println!("{} : {:?}", &ext.to_string(),key);
 		}

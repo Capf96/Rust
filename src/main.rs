@@ -25,6 +25,7 @@ fn main() {
 fn escribir(vec: HashMap<String,String>, ext: &str){
 	/*Recorro el hash map a ver si consigo el archivo*/
 	for (key,value) in &vec{
+		println!("{:?} -> {:?}",key, value);
 		if key.contains(&ext.to_string()){
 			println!("{} : {:?}", &ext.to_string(),value);
 		}
@@ -42,10 +43,10 @@ fn escribir(vec: HashMap<String,String>, ext: &str){
     	//Archivo path
     	let string = format!("{} {} \n", key, value);
     	match file.write_all(string.as_bytes()) {
-        Err(why) => {
-            panic!("No se pudo crear el archivo {}: {}", display, why.description())
-        },
-        Ok(_) => continue,
+	        Err(why) => {
+	            panic!("No se pudo crear el archivo {}: {}", display, why.description())
+	        },
+	        Ok(_) => continue,
    		}	
     }
     

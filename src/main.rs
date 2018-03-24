@@ -9,7 +9,6 @@ use std::error::Error;
 use std::io::{BufReader,BufRead};
 
 
-
 fn main() {
 	/*Primero debo leer el archivo txt a ver si la busqueda 
 	ya la he realizado, de lo contrario recorro el path y 
@@ -25,11 +24,10 @@ fn main() {
 
 fn escribir(vec: HashMap<String,String>, ext: &str){
 	/*Recorro el hash map a ver si consigo el archivo*/
-	if vec.contains_key(&ext.to_string()) { 
-		println!("{} : {:?}", &ext.to_string(),vec.get(&ext.to_string()).unwrap());
-	}
-	else{
-		println!("No se escontro ningun archivo");
+	for (key,value) in &vec{
+		if key.contains(&ext.to_string()){
+			println!("{} : {:?}", &ext.to_string(),value);
+		}
 	}
 	/*Almaceno lo que esta en el hash map en un txt para una proxima busqueda*/
     let path = Path::new("busqueda.txt");
@@ -47,8 +45,8 @@ fn escribir(vec: HashMap<String,String>, ext: &str){
         Err(why) => {
             panic!("No se pudo crear el archivo {}: {}", display, why.description())
         },
-        Ok(_) => println!("Fue escrito exitosamente {}", display),
-    }
+        Ok(_) => continue,
+   		}	
     }
     
 }
@@ -56,13 +54,17 @@ fn escribir(vec: HashMap<String,String>, ext: &str){
 fn leer(ext: &str) {
 	/*Leo el archivo como primera opcion para ver si 
 	lo que busco se encuentra en el */
-    let file = File::open("busqueda.txt").unwrap();
-    for line in BufReader::new(file).lines() {
-        if line.unwrap().contains(ext){
-        	println!("Esta en el archivo pero no puedo imprimirlo :c");
-        	//println!("{:?}",line.unwrap());
-        }
-    }
+	let file = File::open("busqueda.txt");
+	let archivo = match file {
+		Ok(x) => x,
+		Err(_) => return,
+	};
+	for line in BufReader::new(archivo).lines() {
+		if line.unwrap().contains(ext){
+			println!("Esta en el archivo pero no puedo imprimirlo :c");
+			//println!("{:?}",line.unwrap());
+		}
+	}
 }
 
 fn recorrer_path() -> HashMap<String,String>{

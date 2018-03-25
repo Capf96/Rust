@@ -7,7 +7,6 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::error::Error;
 use std::io::{BufReader,BufRead};
-//use std::fs::OpenOptions;
 
 /*----------------------------------------------------------------------------
 									Main
@@ -80,7 +79,6 @@ fn escribir(vec: HashMap<String,String>) -> HashMap<String,String> {
 	
 	/*Almaceno lo que esta en el hash map en un txt para una proxima busqueda*/
 	
-	//let mut recorrer_archivo = OpenOptions::new().write(true).append(true).open("busqueda.txt").unwrap();
 	let path = Path::new("busqueda.txt");
 	let display = path.display();
 	let mut file = File::create(&path).expect("No se pudo crear el archivo");
@@ -93,11 +91,7 @@ fn escribir(vec: HashMap<String,String>) -> HashMap<String,String> {
 				panic!("No se pudo escribir en el archivo {}: {}", display, why.description())
 			},
 			Ok(_) => continue,
-		}	
-		/*let string = key+"$"+&value;
-		if let Err(e) = writeln!(recorrer_archivo, "{}",string) {
-			eprintln!("No se pudo escribir en el archivo: {}", e);
-		}*/
+		}
 	}
 	vec
 	

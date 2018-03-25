@@ -53,7 +53,7 @@ archivos contiene la coincidencia a encontrar dentro del nombre del archivo
 */
 
 fn busqueda(vec: HashMap<String,String>, ext: &str){
-	/*Recorro el hash map a ver si consigo el archivo*/
+	/*Recorremos el hash map a ver si consigo el archivo*/
 	for (key,value) in vec{
 		if value.contains(&ext.to_string()){
 			println!("{} : {:?}", &ext.to_string(),key);
@@ -87,6 +87,7 @@ fn escribir(vec: HashMap<String,String>) -> HashMap<String,String> {
 	for (key,value) in &vec{
 		//Almacena en el txt de la forma : path$nombreDelArchivo
 		let string = format!("{}${}\n", key, value);
+		//Verficamos si el archivo fue escrito correctamente
 		match file.write_all(string.as_bytes()) {
 			Err(why) => {
 				panic!("No se pudo escribir en el archivo {}: {}", display, why.description())
@@ -118,6 +119,7 @@ fn leer() -> HashMap<String,String>  {
 	lo que busco se encuentra en el */
 	let mut dir = HashMap::new();
 	let file = File::open("busqueda.txt");
+	//Revisamos si el archivo existia, en caso contrario lo creamos
 	let archivo = match file {
 		Ok(x) => x,
 		Err(_) => {
@@ -126,6 +128,9 @@ fn leer() -> HashMap<String,String>  {
 			temporal.unwrap()
 		}
 	};
+	/*Leemos cada linea del archivo indice y la separamos con el formato que
+	usamos para su escritura en donde separamos el path del nombre del archivo
+	con un $*/
 	for line in BufReader::new(archivo).lines() {
 		let line = line.unwrap();
 		let valor = line.rfind("$");

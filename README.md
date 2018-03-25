@@ -32,4 +32,4 @@ El argumento ```i``` es opcional, el cual indica si se deben recorrer los direct
 * **Maria A. Bracamonte Q** - *10-11147* 
 * **Carlos A. Perez F.** - *13-11089*
 
-Estudiantes de la Universidad Simón Bolívar, Caracas-Venezuela. 
+Estudiantes de la Universidad Simón Bolívar, Caracas-Venezuela.  

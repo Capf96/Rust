@@ -1,1 +1,1 @@
-/home/mabraca/Documentos/universidad/lenguajes/Rust/project/target/debug/project: /home/mabraca/Documentos/universidad/lenguajes/Rust/project/src/main.rs
+/Users/casimiroperez/Documents/Universidad/Lenguajes\ de\ programacion/Rust/Projects/Rust/target/debug/project.dSYM: /Users/casimiroperez/Documents/Universidad/Lenguajes\ de\ programacion/Rust/Projects/Rust/src/main.rs

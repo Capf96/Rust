@@ -1,3 +1,11 @@
+/*
+Buscador - Indizador
+
+Autores:
+	Maria A. Bracamonte Q. 	10-10147
+	Carlos A. Pérez F.		13-11089
+*/
+
 use std::env;
 use std::path::Path;
 extern crate walkdir;

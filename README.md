@@ -20,7 +20,7 @@ Dentro de la carpeta del proyecto se debe correr en terminal con el siguiente co
 ```
 usuario@algo:-/direccion-al-proyecto$ cargo run palabra i
 ```
-El argumento 'i' es opcional, el cual indica si se deben recorrer los directorios o solo se utilizara el archivo índice. el argumento palabra se sustituye con la incidencia que se quiera encontrar en el nombre de los archivos.
+El argumento ```i``` es opcional, el cual indica si se deben recorrer los directorios o solo se utilizara el archivo índice. el argumento palabra se sustituye con la incidencia que se quiera encontrar en el nombre de los archivos.
 
 ### Requisitos del sistema
 
